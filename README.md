@@ -1,11 +1,11 @@
 # AI Device Recommendation Platform
 
-A modern Next.js application that provides AI-powered device recommendations using the Deepseek API. Users can browse through different device categories (laptops, smartphones, headphones, keyboards) with subcategories and get personalized recommendations based on their needs.
+A modern Next.js application that provides AI-powered device recommendations using the Gemini API. Users can browse through different device categories (laptops, smartphones, headphones, keyboards) with subcategories and get personalized recommendations based on their needs.
 
 ## Features
 
 - **Category Navigation**: Browse devices by major categories with subcategories
-- **AI Recommendations**: Get personalized device suggestions powered by Deepseek AI
+- **AI Recommendations**: Get personalized device suggestions powered by Gemini AI
 - **Advanced Filtering**: Filter devices by subcategory, price, rating, and more
 - **Responsive Design**: Optimized for desktop and mobile devices
 - **Modern UI**: Built with Tailwind CSS and Lucide React icons
@@ -46,7 +46,7 @@ A modern Next.js application that provides AI-powered device recommendations usi
 
 - Node.js 18+ 
 - npm or yarn
-- Deepseek API key
+- Gemini API key
 
 ### Installation
 
@@ -64,7 +64,9 @@ npm install
 3. Set up environment variables:
 Create a `.env.local` file in the root directory:
 ```bash
-DEEPSEEK_API_KEY=your_deepseek_api_key_here
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -97,7 +99,7 @@ src/
 │   ├── categories.ts     # Category definitions
 │   └── devices.ts        # Device database
 ├── lib/                  # Utility functions
-│   ├── deepseek.ts       # Deepseek AI client
+│   ├── gemini.ts         # Gemini AI client
 │   └── utils.ts          # Helper functions
 └── types/                # TypeScript type definitions
     └── index.ts
@@ -105,7 +107,7 @@ src/
 
 ## API Integration
 
-The platform integrates with the Deepseek API to provide intelligent device recommendations. The AI analyzes:
+The platform integrates with the Gemini API to provide intelligent device recommendations. The AI analyzes:
 
 - User requirements and preferences
 - Budget constraints
@@ -174,7 +176,7 @@ npm start
 
 ## Environment Variables
 
-- `DEEPSEEK_API_KEY`: Your Deepseek API key for AI recommendations
+- `GEMINI_API_KEY`: Your Gemini API key for AI recommendations
 - `NEXT_PUBLIC_APP_URL`: The public URL of your application
 
 ## License

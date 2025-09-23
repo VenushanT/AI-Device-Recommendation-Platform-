@@ -8,7 +8,7 @@ import { Brain, Loader2, Star, ThumbsUp, ThumbsDown, DollarSign } from 'lucide-r
 export default function RecommendationsPage() {
   const [formData, setFormData] = useState<RecommendationRequest>({
     category: '',
-    budget: { min: 0, max: 5000 },
+    budget: { min: 0, max: 0 },
     preferences: [],
     usage: '',
     experience: 'intermediate'
@@ -120,10 +120,10 @@ export default function RecommendationsPage() {
                       <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <input
                         type="number"
-                        value={formData.budget?.min || 0}
+                        value={formData.budget?.min || ''}
                         onChange={(e) => setFormData({
                           ...formData,
-                          budget: { ...formData.budget!, min: Number(e.target.value) }
+                          budget: { ...formData.budget!, min: Number(e.target.value) || 0 }
                         })}
                         className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                         placeholder="0"
@@ -136,13 +136,13 @@ export default function RecommendationsPage() {
                       <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <input
                         type="number"
-                        value={formData.budget?.max || 5000}
+                        value={formData.budget?.max || ''}
                         onChange={(e) => setFormData({
                           ...formData,
-                          budget: { ...formData.budget!, max: Number(e.target.value) }
+                          budget: { ...formData.budget!, max: Number(e.target.value) || 0 }
                         })}
                         className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        placeholder="5000"
+                        placeholder="0"
                       />
                     </div>
                   </div>

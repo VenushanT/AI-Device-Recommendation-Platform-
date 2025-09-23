@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import DeepseekAI from '@/lib/deepseek'
+import GeminiAI from '@/lib/gemini'
 import { devices } from '@/data/devices'
 import { RecommendationRequest } from '@/types'
 
@@ -7,15 +7,11 @@ export async function POST(request: NextRequest) {
   try {
     const body: RecommendationRequest = await request.json()
     
-    if (!process.env.DEEPSEEK_API_KEY) {
-      return NextResponse.json(
-        { error: 'Deepseek API key not configured' },
-        { status: 500 }
-      )
-    }
-
-    const deepseek = new DeepseekAI(process.env.DEEPSEEK_API_KEY)
-    const recommendations = await deepseek.getRecommendations(body, devices)
+    // Use Gemini API key
+    const apiKey = process.env.GEMINI_API_KEY || 'not_configured'
+    
+    const gemini = new GeminiAI(apiKey)
+    const recommendations = await gemini.getRecommendations(body, devices)
 
     return NextResponse.json({ recommendations })
   } catch (error) {
