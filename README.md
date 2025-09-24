@@ -448,7 +448,7 @@ Need help? We're here for you:
 
 <div align="center">
 
-**Built with ❤️ and AI**
+**Built with ❤️**
 
 [🌟 Star this repo](https://github.com/VenushanT/AI-Device-Recommendation-Platform-) • [🐛 Report Bug](https://github.com/VenushanT/AI-Device-Recommendation-Platform-/issues) • [✨ Request Feature](https://github.com/VenushanT/AI-Device-Recommendation-Platform-/issues)
 
