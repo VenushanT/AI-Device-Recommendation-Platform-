@@ -55,69 +55,85 @@ export default function RecommendationsPage() {
   const selectedCategory = categories.find(c => c.id === formData.category)
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 bg-cyber-grid bg-[size:50px_50px] opacity-10"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+      
       {/* Header */}
-      <div className="bg-gradient-to-br from-primary-50 to-primary-100">
-        <div className="container py-16">
+      <div className="relative z-10">
+        <div className="container py-20">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="flex items-center justify-center mb-6">
-              <div className="bg-primary-600 p-4 rounded-full">
-                <Brain className="h-8 w-8 text-white" />
+            <div className="flex items-center justify-center mb-8 stagger-item">
+              <div className="relative magnetic-hover">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-600 rounded-full blur-2xl opacity-60 pulse-glow"></div>
+                <div className="relative bg-gradient-to-br from-purple-600 via-purple-700 to-cyan-600 p-6 rounded-full shadow-2xl">
+                  <Brain className="h-12 w-12 text-white animate-pulse" />
+                </div>
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              AI Device Recommendations
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight stagger-item">
+              <span className="gradient-text block mb-2">AI Device</span>
+              <span className="text-slate-200">Recommendations</span>
             </h1>
-            <p className="text-xl text-gray-700">
-              Tell us your needs and let our AI find the perfect devices for you
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed stagger-item">
+              Tell us your needs and let our <span className="text-purple-300">advanced AI</span> find the perfect devices for you
             </p>
           </div>
         </div>
       </div>
 
-      <div className="container py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Recommendation Form */}
-          <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      <div className="container py-12 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          {/* Enhanced Recommendation Form */}
+          <div className="glass-card backdrop-blur-xl bg-white/10 border-white/20 rounded-3xl p-10 mb-12 hover:bg-white/15 transition-all duration-500 magnetic-hover">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 stagger-item">
               What are you looking for?
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Category Selection */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Device Category *
+            <form onSubmit={handleSubmit} className="space-y-10">
+              {/* Enhanced Category Selection */}
+              <div className="stagger-item">
+                <label className="flex items-center text-lg font-semibold text-slate-200 mb-6">
+                  Device Category <span className="text-purple-400 ml-2">*</span>
                 </label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {categories.map((category) => (
                     <button
                       key={category.id}
                       type="button"
                       onClick={() => setFormData({ ...formData, category: category.id })}
-                      className={`p-4 border rounded-lg text-center transition-all ${
+                      className={`group relative overflow-hidden p-8 rounded-2xl text-center transition-all duration-500 transform hover:scale-105 magnetic-hover ${
                         formData.category === category.id
-                          ? 'border-primary-500 bg-primary-50 text-primary-700'
-                          : 'border-gray-300 hover:border-gray-400'
+                          ? 'bg-gradient-to-br from-purple-600/30 to-cyan-600/30 border-2 border-purple-400/60 shadow-2xl shadow-purple-500/25'
+                          : 'glass-card bg-white/5 border border-white/20 hover:bg-white/10 hover:border-white/40'
                       }`}
                     >
-                      <div className="text-3xl mb-2">{category.icon}</div>
-                      <div className="font-medium text-sm">{category.name}</div>
+                      <div className="text-5xl mb-4 group-hover:animate-bounce transition-transform duration-300">
+                        {category.icon}
+                      </div>
+                      <div className="font-bold text-white text-lg group-hover:text-purple-300 transition-colors duration-300">
+                        {category.name}
+                      </div>
+                      {formData.category === category.id && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-500/20 to-cyan-600/20 rounded-2xl animate-pulse"></div>
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Budget Range */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+              {/* Enhanced Budget Range */}
+              <div className="stagger-item">
+                <label className="block text-lg font-semibold text-slate-200 mb-6">
                   Budget Range
                 </label>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs text-gray-500 mb-1">Minimum</label>
-                    <div className="relative">
-                      <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="block text-sm text-slate-300 font-medium">Minimum</label>
+                    <div className="relative group">
+                      <DollarSign className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-purple-400 transition-colors duration-300" />
                       <input
                         type="number"
                         value={formData.budget?.min || ''}
@@ -125,15 +141,15 @@ export default function RecommendationsPage() {
                           ...formData,
                           budget: { ...formData.budget!, min: Number(e.target.value) || 0 }
                         })}
-                        className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        placeholder="0"
+                        className="pl-12 w-full p-4 glass-card bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-400/60 focus:bg-white/15 transition-all duration-300"
+                        placeholder="500"
                       />
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-xs text-gray-500 mb-1">Maximum</label>
-                    <div className="relative">
-                      <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <div className="space-y-3">
+                    <label className="block text-sm text-slate-300 font-medium">Maximum</label>
+                    <div className="relative group">
+                      <DollarSign className="absolute left-4 top-4 h-5 w-5 text-slate-400 group-focus-within:text-purple-400 transition-colors duration-300" />
                       <input
                         type="number"
                         value={formData.budget?.max || ''}
@@ -141,193 +157,228 @@ export default function RecommendationsPage() {
                           ...formData,
                           budget: { ...formData.budget!, max: Number(e.target.value) || 0 }
                         })}
-                        className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        placeholder="0"
+                        className="pl-12 w-full p-4 glass-card bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-400/60 focus:bg-white/15 transition-all duration-300"
+                        placeholder="1000"
                       />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Usage Description */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  How will you use this device? *
+              {/* Enhanced Usage Description */}
+              <div className="stagger-item">
+                <label className="flex items-center text-lg font-semibold text-slate-200 mb-6">
+                  How will you use this device? <span className="text-purple-400 ml-2">*</span>
                 </label>
                 <textarea
                   value={formData.usage}
                   onChange={(e) => setFormData({ ...formData, usage: e.target.value })}
-                  rows={3}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="e.g., Gaming, work presentations, video editing, casual browsing..."
+                  rows={4}
+                  className="w-full p-6 glass-card bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-400/60 focus:bg-white/15 transition-all duration-300 resize-none"
+                  placeholder="for coding, gaming, video editing, content creation..."
                   required
                 />
               </div>
 
-              {/* Experience Level */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+              {/* Enhanced Experience Level */}
+              <div className="stagger-item">
+                <label className="block text-lg font-semibold text-slate-200 mb-6">
                   Your Experience Level
                 </label>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { value: 'beginner', label: 'Beginner', desc: 'New to this category' },
-                    { value: 'intermediate', label: 'Intermediate', desc: 'Some experience' },
-                    { value: 'advanced', label: 'Advanced', desc: 'Expert level' }
+                    { value: 'beginner', label: 'Beginner', desc: 'New to this category', icon: '🌱' },
+                    { value: 'intermediate', label: 'Intermediate', desc: 'Some experience', icon: '⚡' },
+                    { value: 'advanced', label: 'Advanced', desc: 'Expert level', icon: '🚀' }
                   ].map((level) => (
                     <button
                       key={level.value}
                       type="button"
                       onClick={() => setFormData({ ...formData, experience: level.value as any })}
-                      className={`p-4 border rounded-lg text-center transition-all ${
+                      className={`group relative overflow-hidden p-8 rounded-2xl text-center transition-all duration-500 transform hover:scale-105 magnetic-hover ${
                         formData.experience === level.value
-                          ? 'border-primary-500 bg-primary-50 text-primary-700'
-                          : 'border-gray-300 hover:border-gray-400'
+                          ? 'bg-gradient-to-br from-purple-600/30 to-cyan-600/30 border-2 border-purple-400/60 shadow-2xl shadow-purple-500/25'
+                          : 'glass-card bg-white/5 border border-white/20 hover:bg-white/10 hover:border-white/40'
                       }`}
                     >
-                      <div className="font-medium">{level.label}</div>
-                      <div className="text-xs text-gray-500 mt-1">{level.desc}</div>
+                      <div className="text-3xl mb-3 group-hover:animate-bounce transition-transform duration-300">
+                        {level.icon}
+                      </div>
+                      <div className="font-bold text-white text-xl mb-2 group-hover:text-purple-300 transition-colors duration-300">
+                        {level.label}
+                      </div>
+                      <div className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors duration-300">
+                        {level.desc}
+                      </div>
+                      {formData.experience === level.value && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-500/20 to-cyan-600/20 rounded-2xl animate-pulse"></div>
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={!formData.category || !formData.usage || loading}
-                className="w-full bg-primary-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="animate-spin h-5 w-5 mr-2" />
-                    Getting Recommendations...
-                  </>
-                ) : (
-                  <>
-                    <Brain className="h-5 w-5 mr-2" />
-                    Get AI Recommendations
-                  </>
-                )}
-              </button>
+              {/* Enhanced Submit Button */}
+              <div className="stagger-item">
+                <button
+                  type="submit"
+                  disabled={!formData.category || !formData.usage || loading}
+                  className="group relative w-full overflow-hidden py-6 px-8 rounded-2xl font-bold text-xl text-white transition-all duration-500 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 magnetic-hover"
+                  style={{
+                    background: loading 
+                      ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%)'
+                      : 'linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #06b6d4 100%)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                  <div className="relative flex items-center justify-center space-x-3">
+                    {loading ? (
+                      <>
+                        <Loader2 className="animate-spin h-6 w-6" />
+                        <span>Getting AI Recommendations...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Brain className="h-6 w-6 group-hover:animate-pulse" />
+                        <span>Get AI Recommendations</span>
+                        <div className="w-2 h-2 bg-white rounded-full opacity-75 animate-pulse"></div>
+                      </>
+                    )}
+                  </div>
+                </button>
+              </div>
             </form>
 
             {error && (
-              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-700">{error}</p>
+              <div className="mt-8 p-6 glass-card bg-red-500/20 border border-red-400/40 rounded-2xl backdrop-blur-sm">
+                <p className="text-red-100 text-lg font-medium flex items-center">
+                  <div className="w-2 h-2 bg-red-400 rounded-full mr-3 animate-pulse"></div>
+                  {error}
+                </p>
               </div>
             )}
           </div>
 
           {/* Recommendations Results */}
           {recommendations.length > 0 && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900">
-                Recommended for You
+            <div className="space-y-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 text-center mb-12">
+                ✨ Perfect Matches for You
               </h2>
 
-              {recommendations.map((rec, index) => (
-                <div
-                  key={rec.device.id}
-                  className="bg-white rounded-xl shadow-sm border p-8"
-                >
-                  <div className="flex items-start space-x-6">
-                    {/* Rank Badge */}
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                        #{index + 1}
+              <div className="grid gap-8">
+                {recommendations.map((rec, index) => (
+                  <div
+                    key={rec.device.id}
+                    className="group glass-card bg-white/5 border border-white/20 rounded-3xl p-8 hover:bg-white/10 hover:border-white/40 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 magnetic-hover backdrop-blur-xl shadow-2xl shadow-purple-900/20"
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                  >
+                    <div className="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-8">
+                      {/* Rank Badge & Device Image */}
+                      <div className="flex flex-col items-center space-y-4">
+                        {/* Rank Badge */}
+                        <div className="relative">
+                          <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-cyan-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl shadow-xl group-hover:shadow-2xl group-hover:shadow-purple-500/30 transition-all duration-500">
+                            #{index + 1}
+                          </div>
+                          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                            <div className="bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                              {rec.score}% Match
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Device Image */}
+                        <div className="w-40 h-32 bg-gradient-to-br from-purple-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center group-hover:from-purple-600/30 group-hover:to-cyan-600/30 transition-all duration-500 border border-white/20">
+                          <div className="text-6xl opacity-60 group-hover:opacity-80 transition-opacity duration-300">
+                            {selectedCategory?.icon}
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-center mt-2">
-                        <div className="text-sm font-medium text-primary-600">
-                          {rec.score}% Match
+
+                      {/* Device Details */}
+                      <div className="flex-1">
+                        <div className="flex flex-col md:flex-row items-start justify-between mb-6">
+                          <div className="flex-1">
+                            <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                              {rec.device.name}
+                            </h3>
+                            <div className="flex flex-wrap items-center gap-4 text-slate-300 mb-4">
+                              <span className="flex items-center px-3 py-1 bg-white/10 rounded-full text-sm font-medium">
+                                {rec.device.brand}
+                              </span>
+                              <span className="flex items-center">
+                                <Star className="h-5 w-5 text-yellow-400 fill-current mr-2" />
+                                <span className="font-semibold text-white">{rec.device.rating}</span>
+                              </span>
+                              <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white rounded-full text-sm font-medium border border-white/20">
+                                {rec.device.subcategory}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-center md:text-right">
+                            <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-4">
+                              {formatPrice(rec.device.price)}
+                            </div>
+                            <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-bold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                              View Details
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* AI Reasoning */}
+                        <div className="glass-card bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-400/30 rounded-2xl p-6 mb-6 group-hover:from-blue-500/15 group-hover:to-purple-500/15 transition-all duration-500">
+                          <h4 className="font-bold text-blue-300 mb-3 flex items-center text-lg">
+                            <Brain className="h-5 w-5 mr-3 text-blue-400" />
+                            Why This Is Perfect for You
+                          </h4>
+                          <p className="text-blue-100 leading-relaxed">{rec.reasoning}</p>
+                        </div>
+
+                        {/* Pros and Cons */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {rec.pros.length > 0 && (
+                            <div className="glass-card bg-green-500/10 border border-green-400/30 rounded-2xl p-6 group-hover:bg-green-500/15 transition-all duration-500">
+                              <h4 className="font-bold text-green-300 mb-4 flex items-center text-lg">
+                                <ThumbsUp className="h-5 w-5 mr-3 text-green-400" />
+                                Advantages
+                              </h4>
+                              <ul className="space-y-3">
+                                {rec.pros.map((pro, i) => (
+                                  <li key={i} className="text-green-100 flex items-start leading-relaxed">
+                                    <span className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    {pro}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {rec.cons.length > 0 && (
+                            <div className="glass-card bg-red-500/10 border border-red-400/30 rounded-2xl p-6 group-hover:bg-red-500/15 transition-all duration-500">
+                              <h4 className="font-bold text-red-300 mb-4 flex items-center text-lg">
+                                <ThumbsDown className="h-5 w-5 mr-3 text-red-400" />
+                                Considerations
+                              </h4>
+                              <ul className="space-y-3">
+                                {rec.cons.map((con, i) => (
+                                  <li key={i} className="text-red-100 flex items-start leading-relaxed">
+                                    <span className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    {con}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
 
-                    {/* Device Image */}
-                    <div className="w-32 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <div className="text-4xl opacity-50">
-                        {selectedCategory?.icon}
-                      </div>
-                    </div>
-
-                    {/* Device Details */}
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-1">
-                            {rec.device.name}
-                          </h3>
-                          <div className="flex items-center space-x-4 text-sm text-gray-600">
-                            <span>{rec.device.brand}</span>
-                            <span className="flex items-center">
-                              <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
-                              {rec.device.rating}
-                            </span>
-                            <span className="px-2 py-1 bg-gray-100 rounded-full">
-                              {rec.device.subcategory}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold text-primary-600">
-                            {formatPrice(rec.device.price)}
-                          </div>
-                          <button className="mt-2 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
-                            View Details
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* AI Reasoning */}
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                        <h4 className="font-semibold text-blue-900 mb-2 flex items-center">
-                          <Brain className="h-4 w-4 mr-2" />
-                          Why we recommend this
-                        </h4>
-                        <p className="text-blue-800 text-sm">{rec.reasoning}</p>
-                      </div>
-
-                      {/* Pros and Cons */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {rec.pros.length > 0 && (
-                          <div>
-                            <h4 className="font-semibold text-green-900 mb-2 flex items-center">
-                              <ThumbsUp className="h-4 w-4 mr-2 text-green-600" />
-                              Pros
-                            </h4>
-                            <ul className="space-y-1">
-                              {rec.pros.map((pro, i) => (
-                                <li key={i} className="text-sm text-green-800 flex items-start">
-                                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
-                                  {pro}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {rec.cons.length > 0 && (
-                          <div>
-                            <h4 className="font-semibold text-red-900 mb-2 flex items-center">
-                              <ThumbsDown className="h-4 w-4 mr-2 text-red-600" />
-                              Cons
-                            </h4>
-                            <ul className="space-y-1">
-                              {rec.cons.map((con, i) => (
-                                <li key={i} className="text-sm text-red-800 flex items-start">
-                                  <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
-                                  {con}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                    {/* Hover Effect Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 via-pink-500/5 to-cyan-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           )}
         </div>

@@ -344,4 +344,69 @@
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
+
+  /* Form Input Focus Animations */
+  .form-input {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-input::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.8), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .form-input:focus-within::before {
+    left: 100%;
+  }
+
+  /* Enhanced Card Hover Animations */
+  .recommendation-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  .recommendation-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(139, 92, 246, 0.25);
+  }
+
+  .recommendation-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3), rgba(6, 182, 212, 0.3));
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .recommendation-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Staggered container for form sections */
+  .stagger-container {
+    animation: container-fade-in 0.8s ease-out forwards;
+  }
+
+  @keyframes container-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import { Device } from '@/types'
 
 export const devices: Device[] = [
-  // Laptops
+  // Laptops - More diverse price ranges
   {
     id: 'laptop-1',
     name: 'MacBook Pro 16"',
@@ -42,8 +42,68 @@ export const devices: Device[] = [
     features: ['144Hz display', 'RGB keyboard', 'Advanced cooling', 'Wi-Fi 6E'],
     inStock: true
   },
+  {
+    id: 'laptop-3',
+    name: 'Dell XPS 13',
+    category: 'laptop',
+    subcategory: 'ultrabook',
+    brand: 'Dell',
+    price: 999,
+    rating: 4.5,
+    image: '/images/dell-xps-13.jpg',
+    description: 'Premium ultrabook with excellent build quality and portability',
+    specs: {
+      processor: 'Intel Core i7-1360P',
+      ram: '16GB LPDDR5',
+      storage: '512GB SSD',
+      display: '13.4" FHD+ InfinityEdge',
+      battery: 'Up to 12 hours'
+    },
+    features: ['Ultra-portable design', 'InfinityEdge display', 'Premium materials', 'Fast charging'],
+    inStock: true
+  },
+  {
+    id: 'laptop-4',
+    name: 'Lenovo ThinkPad X1 Carbon',
+    category: 'laptop',
+    subcategory: 'business',
+    brand: 'Lenovo',
+    price: 1599,
+    rating: 4.7,
+    image: '/images/thinkpad-x1.jpg',
+    description: 'Business laptop with military-grade durability and security features',
+    specs: {
+      processor: 'Intel Core i7-1365U',
+      ram: '16GB LPDDR5',
+      storage: '1TB SSD',
+      display: '14" WUXGA IPS',
+      battery: 'Up to 15 hours'
+    },
+    features: ['MIL-SPEC durability', 'TrackPoint', 'ThinkShield security', 'Rapid charging'],
+    inStock: true
+  },
+  {
+    id: 'laptop-5',
+    name: 'Acer Aspire 5',
+    category: 'laptop',
+    subcategory: 'budget',
+    brand: 'Acer',
+    price: 599,
+    rating: 4.2,
+    image: '/images/acer-aspire-5.jpg',
+    description: 'Affordable laptop for everyday computing and light productivity',
+    specs: {
+      processor: 'AMD Ryzen 5 7520U',
+      ram: '8GB DDR4',
+      storage: '256GB SSD',
+      display: '15.6" FHD IPS',
+      battery: 'Up to 8 hours'
+    },
+    features: ['Budget-friendly', 'Decent performance', 'Full-size keyboard', 'Multiple ports'],
+    inStock: true
+  },
   
-  // Smartphones
+  // Smartphones - More options
   {
     id: 'mobile-1',
     name: 'iPhone 15 Pro',
@@ -84,8 +144,48 @@ export const devices: Device[] = [
     features: ['Galaxy AI', 'Circle to Search', 'Live Translate', 'S Pen support'],
     inStock: true
   },
+  {
+    id: 'mobile-3',
+    name: 'Google Pixel 8',
+    category: 'mobile',
+    subcategory: 'mid-range',
+    brand: 'Google',
+    price: 699,
+    rating: 4.5,
+    image: '/images/pixel-8.jpg',
+    description: 'Pure Android experience with excellent camera AI features',
+    specs: {
+      processor: 'Google Tensor G3',
+      storage: '128GB',
+      display: '6.2" OLED 120Hz',
+      camera: '50MP dual camera',
+      battery: '4575mAh'
+    },
+    features: ['Pure Android', 'Pixel camera AI', 'Fast security updates', 'Magic Eraser'],
+    inStock: true
+  },
+  {
+    id: 'mobile-4',
+    name: 'OnePlus 12',
+    category: 'mobile',
+    subcategory: 'flagship',
+    brand: 'OnePlus',
+    price: 799,
+    rating: 4.4,
+    image: '/images/oneplus-12.jpg',
+    description: 'Fast-charging flagship with premium performance',
+    specs: {
+      processor: 'Snapdragon 8 Gen 3',
+      storage: '256GB',
+      display: '6.82" LTPO AMOLED 120Hz',
+      camera: '50MP Hasselblad triple camera',
+      battery: '5400mAh'
+    },
+    features: ['100W SuperVOOC charging', 'Hasselblad cameras', 'OxygenOS', 'Alert slider'],
+    inStock: true
+  },
   
-  // Headphones
+  // Headphones - Expanded selection
   {
     id: 'headphone-1',
     name: 'Sony WH-1000XM5',
@@ -126,8 +226,48 @@ export const devices: Device[] = [
     features: ['2.4GHz wireless', 'DTS Headphone:X v2.0', 'ClearCast microphone', 'USB-C'],
     inStock: true
   },
+  {
+    id: 'headphone-3',
+    name: 'Audio-Technica ATH-M50x',
+    category: 'headphone',
+    subcategory: 'studio',
+    brand: 'Audio-Technica',
+    price: 149,
+    rating: 4.6,
+    image: '/images/ath-m50x.jpg',
+    description: 'Professional monitor headphones for studio and mixing',
+    specs: {
+      driver: '45mm large-aperture',
+      frequency: '15Hz-28kHz',
+      impedance: '38 ohms',
+      cable: 'Detachable',
+      weight: '285g'
+    },
+    features: ['Professional monitoring', 'Exceptional clarity', 'Detachable cables', 'Foldable design'],
+    inStock: true
+  },
+  {
+    id: 'headphone-4',
+    name: 'Apple AirPods Pro',
+    category: 'headphone',
+    subcategory: 'earbuds',
+    brand: 'Apple',
+    price: 249,
+    rating: 4.7,
+    image: '/images/airpods-pro.jpg',
+    description: 'Premium wireless earbuds with spatial audio',
+    specs: {
+      driver: 'Custom high-excursion',
+      battery: '6 hours (ANC on)',
+      charging: 'MagSafe/Lightning',
+      features: 'Active Noise Cancellation',
+      weight: '5.4g each'
+    },
+    features: ['Spatial Audio', 'Adaptive Transparency', 'Personalized Volume', 'MagSafe charging'],
+    inStock: true
+  },
   
-  // Keyboards
+  // Keyboards - More variety
   {
     id: 'keyboard-1',
     name: 'Logitech MX Keys',
@@ -166,6 +306,46 @@ export const devices: Device[] = [
       weight: '1200g'
     },
     features: ['Cherry MX switches', 'Per-key RGB', 'Media keys', 'Aircraft-grade aluminum'],
+    inStock: true
+  },
+  {
+    id: 'keyboard-3',
+    name: 'Keychron K8',
+    category: 'keyboard',
+    subcategory: 'mechanical',
+    brand: 'Keychron',
+    price: 89,
+    rating: 4.4,
+    image: '/images/keychron-k8.jpg',
+    description: 'Wireless mechanical keyboard for Mac and Windows',
+    specs: {
+      layout: 'Tenkeyless (87 keys)',
+      switches: 'Gateron mechanical',
+      battery: '72 hours',
+      connectivity: 'Bluetooth/USB-C',
+      weight: '755g'
+    },
+    features: ['Hot-swappable switches', 'Mac/Windows compatible', 'RGB backlight', 'Aluminum frame'],
+    inStock: true
+  },
+  {
+    id: 'keyboard-4',
+    name: 'Razer DeathStalker V2 Pro',
+    category: 'keyboard',
+    subcategory: 'gaming',
+    brand: 'Razer',
+    price: 249,
+    rating: 4.5,
+    image: '/images/razer-deathstalker.jpg',
+    description: 'Ultra-thin wireless gaming keyboard with low-profile switches',
+    specs: {
+      layout: 'Full-size',
+      switches: 'Razer Low-Profile Optical',
+      battery: '40 hours',
+      connectivity: 'HyperSpeed Wireless/USB-C',
+      weight: '775g'
+    },
+    features: ['Low-profile optical switches', 'HyperSpeed wireless', 'Per-key RGB', 'Ultra-thin design'],
     inStock: true
   }
 ]
