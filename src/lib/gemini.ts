@@ -2,7 +2,7 @@ import { RecommendationRequest, AIRecommendation, Device } from '@/types'
 
 class GeminiAI {
   private apiKey: string
-  private baseUrl: string = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent'
+  private baseUrl: string = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent'
 
   constructor(apiKey: string) {
     this.apiKey = apiKey
