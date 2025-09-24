@@ -13,7 +13,11 @@ class GeminiAI {
     availableDevices: Device[]
   ): Promise<AIRecommendation[]> {
     // Check if API key is properly configured
-    if (!this.apiKey || this.apiKey.includes('your_') || this.apiKey === 'invalid_key') {
+    if (!this.apiKey || 
+        this.apiKey.includes('your_') || 
+        this.apiKey === 'invalid_key' || 
+        this.apiKey === 'expired_key_using_fallback' ||
+        this.apiKey.length < 30) {
       console.warn('Gemini API key not configured, using fallback recommendations')
       return this.getFallbackRecommendations(request, availableDevices)
     }
@@ -135,16 +139,18 @@ Important: Respond with ONLY the JSON array, no additional text or formatting.`
     try {
       console.log('Raw Gemini Response:', response) // Debug log
       
-      // Clean up the response
+      // Clean up the response more aggressively
       let jsonStr = response.trim()
       
       // Remove markdown code blocks if present
       jsonStr = jsonStr.replace(/```json\s*/g, '').replace(/```\s*/g, '')
       
-      // Find JSON array in the response
-      const jsonMatch = jsonStr.match(/\[[\s\S]*?\]/);
-      if (jsonMatch) {
-        jsonStr = jsonMatch[0]
+      // Remove any text before the first [ and after the last ]
+      const startIndex = jsonStr.indexOf('[')
+      const endIndex = jsonStr.lastIndexOf(']')
+      
+      if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+        jsonStr = jsonStr.substring(startIndex, endIndex + 1)
       } else {
         // If no array found, try to find objects and wrap them
         const objectMatches = jsonStr.match(/\{[\s\S]*?\}/g)
@@ -152,6 +158,15 @@ Important: Respond with ONLY the JSON array, no additional text or formatting.`
           jsonStr = `[${objectMatches.join(',')}]`
         }
       }
+
+      // Fix common JSON formatting issues
+      jsonStr = jsonStr
+        .replace(/\n/g, ' ') // Replace newlines with spaces
+        .replace(/\r/g, '') // Remove carriage returns
+        .replace(/\t/g, ' ') // Replace tabs with spaces
+        .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+        .replace(/,\s*([}\]])/g, '$1') // Remove trailing commas
+        .trim()
 
       console.log('Cleaned JSON String:', jsonStr) // Debug log
       

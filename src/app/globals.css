@@ -54,7 +54,7 @@
   }
   
   body {
-    @apply bg-gradient-to-br from-slate-50 via-purple-50 to-cyan-50 text-slate-900;
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-slate-100;
     @apply dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 dark:text-slate-100;
     min-height: 100vh;
   }
@@ -95,14 +95,14 @@
   
   /* Enhanced Card Styles */
   .card {
-    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/20 p-6;
+    @apply bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-lg border border-slate-700/50 p-6;
     @apply dark:bg-slate-800/80 dark:border-slate-700/50;
     @apply hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300;
   }
   
   .card-hover {
     @apply transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 hover:scale-[1.02];
-    @apply hover:bg-white/90 dark:hover:bg-slate-800/90;
+    @apply hover:bg-slate-800/90 dark:hover:bg-slate-800/90;
   }
   
   /* Enhanced Button Styles */
@@ -129,12 +129,12 @@
   
   /* Glassmorphism effects */
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+    @apply bg-slate-800/10 backdrop-blur-md border border-slate-700/20 rounded-xl;
     @apply dark:bg-slate-800/10 dark:border-slate-700/20;
   }
   
   .glass-card {
-    @apply bg-white/20 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl;
+    @apply bg-slate-800/20 backdrop-blur-lg border border-slate-700/30 rounded-2xl shadow-xl;
     @apply dark:bg-slate-800/20 dark:border-slate-700/30;
   }
   
@@ -151,10 +151,10 @@
   
   /* Enhanced input styles */
   .input-enhanced {
-    @apply bg-white/50 backdrop-blur-sm border-2 border-purple-200 rounded-lg px-4 py-3;
-    @apply focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:bg-white/80;
+    @apply bg-slate-800/50 backdrop-blur-sm border-2 border-slate-600 rounded-lg px-4 py-3;
+    @apply focus:border-purple-400 focus:ring-4 focus:ring-purple-500/20 focus:bg-slate-800/80;
     @apply dark:bg-slate-800/50 dark:border-slate-600 dark:focus:border-purple-400;
-    @apply transition-all duration-200;
+    @apply transition-all duration-200 text-slate-100;
   }
   
   /* Animated gradients */

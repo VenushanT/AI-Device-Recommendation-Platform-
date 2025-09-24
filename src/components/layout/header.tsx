@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Search, Menu, X, Zap } from 'lucide-react'
+import { Menu, X, Zap } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -46,19 +46,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Search and Mobile Menu */}
+          {/* Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center">
-              <div className="relative group">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-purple-500 transition-colors" />
-                <input
-                  type="text"
-                  placeholder="Search devices..."
-                  className="pl-12 pr-4 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:bg-white/20 outline-none w-80 text-slate-700 dark:text-slate-300 placeholder-slate-500 transition-all duration-300"
-                />
-              </div>
-            </div>
-
             {/* Mobile menu button */}
             <button
               onClick={toggleMenu}
@@ -77,16 +66,6 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-6 border-t border-white/20 animate-slide-up">
             <div className="flex flex-col space-y-6">
-              <div className="sm:hidden">
-                <div className="relative group">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-purple-500 transition-colors" />
-                  <input
-                    type="text"
-                    placeholder="Search devices..."
-                    className="pl-12 pr-4 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:bg-white/20 outline-none w-full text-slate-700 dark:text-slate-300 placeholder-slate-500 transition-all duration-300"
-                  />
-                </div>
-              </div>
               {[
                 { href: '/laptops', label: 'Laptops' },
                 { href: '/mobile', label: 'Smartphones' },
