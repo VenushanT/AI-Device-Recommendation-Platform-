@@ -23,10 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
-        <div className="min-h-screen flex flex-col">
+      <body className={`${inter.className} overflow-x-hidden`}>
+        <div className="min-h-screen flex flex-col relative">
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pt-20 page-enter">
             {children}
           </main>
           <Footer />
